@@ -1,6 +1,5 @@
-/* 251204목 공통 스타일 */
+/* 2026.2.25.(수) 오전 3:40 버튼 색상 팔레트 추가*/
 
-/* 박스 모델 통일 */
 * {
   box-sizing: border-box;
 }
@@ -522,19 +521,16 @@ body h2 + hr {
   .tool-card { padding: 16px; }
 }
 
-
 /* ===============================
    이미지 오버플로우 강제 방지
    =============================== */
 
-/* 카드/섹션 내부에서 넘침 차단 */
 .section,
 .tool-card,
 .tool-shot {
   overflow-x: hidden;
 }
 
-/* 스크린샷 래퍼 패딩 제거 */
 .tool-shot {
   padding: 0;
   margin-top: 14px;
@@ -543,7 +539,6 @@ body h2 + hr {
   border: 1px solid #e5e5e5;
 }
 
-/* 이미지: 절대 안 넘치게 */
 .tool-shot img {
   display: block;
   width: 100%;
@@ -552,7 +547,6 @@ body h2 + hr {
   border-radius: 10px;
 }
 
-/* 모바일에서 혹시 모를 계산 오차 추가 차단 */
 @media (max-width: 640px) {
   .tool-shot img {
     width: 100%;
@@ -560,7 +554,6 @@ body h2 + hr {
   }
 }
 
-/* 썸네일 */
 .tool-thumb {
   display: block;
   width: 100%;
@@ -588,7 +581,7 @@ body h2 + hr {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  touch-action: none; /* 핀치/드래그 제어를 JS에서 수행 */
+  touch-action: none;
 }
 
 .img-modal-content {
@@ -645,7 +638,6 @@ body h2 + hr {
   padding: 10px 12px;
 }
 
-/* summary 기본 화살표는 유지해도 되고, 커스텀도 가능 */
 .shot-summary {
   cursor: pointer;
   font-weight: 700;
@@ -654,7 +646,6 @@ body h2 + hr {
   list-style: none;
 }
 
-/* 크롬/사파리 기본 마커 숨기고 싶으면 사용 */
 .shot-summary::-webkit-details-marker {
   display: none;
 }
@@ -671,19 +662,16 @@ body h2 + hr {
   text-decoration: underline;
 }
 
-/* 펼쳤을 때 내부 여백 */
 .shot-details[open] .tool-shot {
   margin-top: 10px;
 }
 
-/* figure 기본 여백 제거 */
 .tool-shot {
   margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
 }
-
 
 .site-footer {
   margin-top: 64px;
@@ -701,64 +689,761 @@ body h2 + hr {
   line-height: 1.6;
 }
 
+.row .btn + .btn { margin-left: 0; }
+
+.dash-summary{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  cursor:pointer;
+  list-style:none;
+}
+
+.dash-summary::-webkit-details-marker{
+  display:none;
+}
+
+.dash-title{
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#btnToTop{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: none;
+  z-index: 999;
+  border-radius: 999px;
+  padding: 10px 12px;
+}
+
 /* =========================================================
-   아카이빙 사이트 추가(최소) - 네비 탭 없이 깔끔하게
+   버튼 색상 팔레트 (2026.2.25)
    ========================================================= */
 
-.kv {
-  text-align: center;
-  margin-top: 12px;
+.btn[class*="pastel-"],
+.btn.paste-pink {
+  border-color: #222;
+  color: #111;
+  transition: background-color 0.15s ease, transform 0.05s ease;
 }
 
-.badge {
-  display: inline-block;
-  padding: 2px 8px;
+.btn[class*="pastel-"]:hover,
+.btn.paste-pink:hover {
+  transform: translateY(-1px);
+}
+
+.btn[class*="pastel-"]:focus-visible,
+.btn.paste-pink:focus-visible {
+  outline: 2px solid rgba(17, 17, 17, 0.35);
+  outline-offset: 2px;
+}
+
+.btn.pastel-yellow { background: #FFF4B8; }
+.btn.pastel-yellow:hover { background: #FFEFA0; }
+
+.btn.pastel-blue { background: #E6F0FF; }
+.btn.pastel-blue:hover { background: #D7E8FF; }
+
+.btn.paste-pink { background: #FFE4EF; border-color: #222; color: #111; }
+.btn.paste-pink:hover { background: #FFD4E4; }
+.btn.paste-pink:focus-visible{
+  outline: 2px solid rgba(255, 123, 176, 0.55);
+  outline-offset: 2px;
+}
+
+.btn.pastel-mint { background: #DFF7EA; }
+.btn.pastel-mint:hover { background: #CFF2E1; }
+
+.btn.pastel-green { background: #E3F6C9; }
+.btn.pastel-green:hover { background: #D4F0B4; }
+
+.btn.pastel-orange { background: #FFE8D1; }
+.btn.pastel-orange:hover { background: #FFDDBE; }
+
+.btn.pastel-red { background: #FFD7D7; }
+.btn.pastel-red:hover { background: #FFC4C4; }
+
+.btn.pastel-purple { background: #EFE2FF; }
+.btn.pastel-purple:hover { background: #E3D1FF; }
+
+.btn.pastel-grey { background: #F3F4F6; border-color: #D4D4D8; }
+.btn.pastel-grey:hover { background: #E9EAEE; }
+
+.btn.pastel-teal { background: #D9F5F3; }
+.btn.pastel-teal:hover { background: #C7F0ED; }
+
+:root{
+  /* 원본(진한 파스텔) */
+  --rose-500: #FF5D8F;
+  --coral-500:#FF6B6B;
+  --peach-500:#FF9F68;
+  --apricot-500:#FFB86B;
+  --butter-500:#FFE08A;
+  --amber-500:#FBBF24;
+  --mint-500:#2DD4BF;
+  --seafoam-500:#34D399;
+  --pistachio-500:#A7F3A0;
+  --sky-500:#38BDF8;
+  --ice-500:#60A5FA;
+  --periwinkle-500:#7C83FF;
+  --lavender-500:#A78BFA;
+  --grape-500:#C084FC;
+  --lilac-500:#E879F9;
+
+  /* 어두운 버전(텍스트용) */
+  --rose-700: #C74970;
+  --coral-700:#C25151;
+  --peach-700:#A66744;
+  --apricot-700:#996E40;
+  --butter-700:#857448;
+  --amber-700:#947115;
+  --mint-700:#1C8376;
+  --seafoam-700:#218560;
+  --pistachio-700:#577E53;
+  --sky-700:#257DA4;
+  --ice-700:#4678B6;
+  --periwinkle-700:#666BD1;
+  --lavender-700:#7D68BC;
+  --grape-700:#8E62BA;
+  --lilac-700:#A757B3;
+}
+
+/* 유틸리티 클래스(텍스트 색) */
+.text-rose { color: var(--rose-700); }
+.text-sky  { color: var(--sky-700); }
+.text-mint { color: var(--mint-700); }
+.text-grape{ color: var(--grape-700); }
+
+/* 강조는 별도로 */
+.accent { font-weight: 700; }
+
+.badge-rose{
+  background: var(--rose-500);
+  color: var(--rose-700);
+  padding: .2em .6em;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  font-size: 0.85rem;
-  color: #666;
+  font-weight: 700;
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: baseline;
+.table-wrap .simple-table th,
+.table-wrap .simple-table td {
+  text-align: center;
 }
 
-.meta .muted {
+/* ===============================
+   이미지 클릭 확대/축소 (CSS-only)
+   =============================== */
+
+details.img-zoom {
   margin: 0;
 }
 
-.item-title {
-  margin: 0 0 6px;
+details.img-zoom > summary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.item-summary {
-  margin: 6px 0 0;
+details.img-zoom > summary::-webkit-details-marker {
+  display: none;
 }
 
-.codeblock {
-  background: #0b1020;
-  color: #e5e7eb;
-  padding: 12px 14px;
+details.img-zoom > summary img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
-  overflow-x: auto;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-code.inline {
-  padding: 1px 6px;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #eee;
   background: #fff;
-  font-size: 0.95em;
+  cursor: inherit;
 }
 
-a.link {
-  text-decoration: underline;
-  color: #0051a8;
+details.img-zoom[open] > summary {
+  cursor: zoom-out;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.65);
 }
 
+details.img-zoom[open] > summary img {
+  width: auto;
+  max-width: 96vw;
+  max-height: 92vh;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+details.img-zoom > summary:focus-visible {
+  outline: 2px solid rgba(17, 17, 17, 0.35);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+details.img-zoom[open] > summary:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.65);
+}
+
+@supports selector(body:has(details[open])) {
+  body:has(details.img-zoom[open]) {
+    overflow: hidden;
+  }
+}
+
+img.thumb {
+  cursor: zoom-in;
+}
+
+/* =========================================================
+   ✅ 가독성 개선(2026.3.3) — index 중심 추가/보강
+   ========================================================= */
+
+/* 스킵 링크(키보드 사용자) */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 10px;
+  z-index: 10001;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+}
+.skip-link:focus{
+  left: 10px;
+}
+
+/* 섹션/카드 내부 첫 제목 위 여백 과다 방지 */
+.section > h2:first-child,
+.section > h3:first-child,
+.section > h4:first-child{
+  margin-top: 0;
+}
+.card > h2:first-child,
+.card > h3:first-child,
+.card > h4:first-child{
+  margin-top: 0;
+}
+
+/* 섹션 내부 hr 간격을 조금 더 촘촘하게 */
+.section hr{
+  margin: 18px 0;
+}
+
+/* 앵커 점프 시 살짝 여유 */
+section[id]{
+  scroll-margin-top: 16px;
+}
+
+/* ✅ index 전용 배경: 흰색으로 고정 */
+.page-index{
+  background: #fff;
+}
+
+/* 상단 헤드 */
+.page-head{
+  text-align: center;
+}
+.page-head .callout{
+  text-align: left;
+  margin-top: 14px;
+}
+
+/* 콜아웃(공지/안내 박스) */
+.callout{
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.list-tight{
+  margin: 0;
+  padding-left: 20px;
+}
+.list-tight li{
+  margin: 6px 0;
+}
+
+/* 빠른 이동(칩 메뉴) */
+.quick-nav{
+  background: #fff;
+}
+.chip-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #f9fafb;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.chip:hover{
+  background: #eef2ff;
+}
+@media (max-width: 640px){
+  .chip-row{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+}
+
+/* 링크 목록(버튼+설명) */
+.link-list{
+  display: grid;
+  gap: 14px;
+}
+.link-item{
+  display: grid;
+  gap: 6px;
+}
+.page-index .link-item .btn{
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+}
+.page-index .link-item .btn-desc{
+  margin: 0;
+  font-size: 0.98rem;
+  color: #4b5563;
+}
+
+/* 대시보드 summary에 화살표 표시(가독성/인지성 ↑) */
+.dash-summary::before{
+  content: "▸";
+  font-weight: 900;
+  margin-right: 6px;
+}
+.dash-details[open] .dash-summary::before{
+  content: "▾";
+}
+
+/* summary 영역을 ‘헤더’처럼 보이게 */
+.dash-summary{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+.dash-details[open] .dash-summary{
+  margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   SPACE OPS THEME (우주 탐험/우주 전쟁 분위기)
+   - html[data-theme="space"] 일 때만 활성화
+   - footer.js에서 기본 테마를 space로 적용(토글 가능)
+   ========================================================= */
+
+:root[data-theme="space"]{
+  color-scheme: dark;
+
+  --space-bg0: #050814;
+  --space-bg1: #070c1d;
+
+  --space-panel: rgba(12, 18, 38, 0.78);
+  --space-panel-2: rgba(10, 14, 30, 0.72);
+
+  --space-border: rgba(120, 180, 255, 0.26);
+  --space-border-strong: rgba(81, 214, 255, 0.58);
+
+  --space-text: rgba(245, 248, 255, 0.92);
+  --space-text-strong: rgba(255, 255, 255, 0.96);
+  --space-muted: rgba(208, 219, 255, 0.68);
+
+  --space-accent: #51d6ff;
+  --space-accent2: #ff4fd8;
+  --space-warn: #ffb703;
+  --space-danger: #ff3b5c;
+  --space-ok: #5cffaa;
+
+  --space-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  --space-inner: 0 0 0 1px rgba(81, 214, 255, 0.12) inset;
+}
+
+:root[data-theme="space"] body{
+  background:
+    radial-gradient(900px 600px at 18% 8%, rgba(81,214,255,0.18), transparent 60%),
+    radial-gradient(800px 520px at 82% 18%, rgba(255,79,216,0.14), transparent 60%),
+    radial-gradient(900px 620px at 42% 92%, rgba(255,183,3,0.10), transparent 65%),
+    linear-gradient(180deg, var(--space-bg1), var(--space-bg0));
+  color: var(--space-text);
+  overflow-x: hidden;
+}
+
+/* 본문 기본 글자색을 어두운 테마에 맞게 일괄 보정 */
+:root[data-theme="space"] body p,
+:root[data-theme="space"] body li,
+:root[data-theme="space"] body div,
+:root[data-theme="space"] body span{
+  color: var(--space-text);
+}
+
+:root[data-theme="space"] body .muted{
+  color: var(--space-muted);
+}
+
+/* index 전용 배경(흰색 고정)을 우주 테마에서 해제 */
+:root[data-theme="space"] .page-index{
+  background: transparent;
+}
+
+/* 별/네뷸라 레이어(가벼운 CSS 타일링) */
+:root[data-theme="space"] body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.85), transparent 2px),
+    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.70), transparent 2px),
+    radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.55), transparent 2px),
+    radial-gradient(2px 2px at 80% 20%, rgba(81,214,255,0.32), transparent 3px),
+    radial-gradient(2px 2px at 15% 75%, rgba(255,79,216,0.22), transparent 3px);
+
+  background-size: 220px 220px, 280px 280px, 360px 360px, 520px 520px, 640px 640px;
+  background-position: 0 0, 60px 30px, 120px 90px, 10px 20px, 80px 50px;
+  opacity: 0.45;
+
+  animation: space-stars-drift 160s linear infinite;
+}
+
+@keyframes space-stars-drift{
+  from{ transform: translate3d(0,0,0); }
+  to{ transform: translate3d(-180px, 220px, 0); }
+}
+
+/* HUD 오버레이: 스캔라인 + 얇은 그리드 */
+:root[data-theme="space"] body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035) 0px,
+      rgba(255,255,255,0.035) 1px,
+      transparent 4px,
+      transparent 7px
+    ),
+    linear-gradient(to right, rgba(81,214,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(81,214,255,0.05) 1px, transparent 1px);
+
+  background-size:
+    auto,
+    110px 110px,
+    110px 110px;
+
+  opacity: 0.10;
+  animation: space-hud-shift 18s linear infinite;
+}
+
+@keyframes space-hud-shift{
+  from{ background-position: 0 0, 0 0, 0 0; }
+  to{ background-position: 0 160px, 120px 0, 0 120px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root[data-theme="space"] body::before,
+  :root[data-theme="space"] body::after{
+    animation: none !important;
+  }
+}
+
+/* 헤딩: 밝게 + 은은한 네온 */
+:root[data-theme="space"] body h1,
+:root[data-theme="space"] body h2,
+:root[data-theme="space"] body h3,
+:root[data-theme="space"] body h4{
+  color: var(--space-text-strong);
+}
+
+:root[data-theme="space"] body h1{
+  text-shadow: 0 0 22px rgba(81,214,255,0.20);
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text){
+  :root[data-theme="space"] body h1{
+    background: linear-gradient(90deg, var(--space-accent), var(--space-accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+}
+
+:root[data-theme="space"] .subtitle{
+  color: var(--space-muted);
+}
+
+/* 구분선 */
+:root[data-theme="space"] hr{
+  border-top: 1px solid rgba(120,180,255,0.18);
+  opacity: 1;
+}
+
+/* 섹션/카드: 글래스 패널 */
+:root[data-theme="space"] .section{
+  background: linear-gradient(180deg, rgba(14, 22, 46, 0.72), rgba(10, 14, 30, 0.72));
+  border: 1px solid var(--space-border);
+  box-shadow: var(--space-shadow), var(--space-inner);
+}
+
+@supports (backdrop-filter: blur(10px)){
+  :root[data-theme="space"] .section{
+    backdrop-filter: blur(10px);
+  }
+}
+
+:root[data-theme="space"] .card,
+:root[data-theme="space"] .tool-card,
+:root[data-theme="space"] .callout,
+:root[data-theme="space"] .shot-details{
+  background: linear-gradient(180deg, rgba(10, 14, 30, 0.78), rgba(8, 12, 26, 0.78));
+  border: 1px solid rgba(120,180,255,0.20);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(81,214,255,0.10) inset;
+}
+
+:root[data-theme="space"] .tool-shot{
+  background: transparent;
+}
+
+:root[data-theme="space"] .tool-thumb,
+:root[data-theme="space"] details.img-zoom > summary img{
+  border-color: rgba(120,180,255,0.20) !important;
+  background: rgba(7, 12, 26, 0.55);
+}
+
+/* 빠른이동 칩 */
+:root[data-theme="space"] .quick-nav{
+  background: transparent;
+}
+
+:root[data-theme="space"] .chip{
+  background: rgba(9, 14, 30, 0.65);
+  border-color: rgba(81,214,255,0.30);
+  color: var(--space-text);
+}
+
+:root[data-theme="space"] .chip:hover{
+  background: rgba(14, 24, 46, 0.80);
+  border-color: rgba(81,214,255,0.55);
+}
+
+/* 버튼: 네온 HUD 스타일 */
+:root[data-theme="space"] .btn{
+  border-color: rgba(120,180,255,0.40);
+  color: var(--space-text-strong);
+  background: rgba(6, 10, 22, 0.62);
+  box-shadow: 0 0 0 1px rgba(81,214,255,0.10) inset;
+}
+
+:root[data-theme="space"] .btn:hover{
+  background: rgba(12, 20, 42, 0.78);
+  border-color: rgba(81,214,255,0.70);
+}
+
+:root[data-theme="space"] .btn:focus-visible{
+  outline: 2px solid rgba(81,214,255,0.55);
+  outline-offset: 2px;
+}
+
+:root[data-theme="space"] .btn.primary{
+  background: linear-gradient(90deg, rgba(81,214,255,0.95), rgba(255,79,216,0.92));
+  color: #06101f;
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 14px 42px rgba(0,0,0,0.55);
+}
+
+:root[data-theme="space"] .btn.primary:hover{
+  filter: brightness(1.06);
+}
+
+:root[data-theme="space"] .btn.ghost{
+  background: rgba(9, 14, 30, 0.55);
+  border-color: rgba(120,180,255,0.22);
+}
+
+:root[data-theme="space"] .btn.ghost:hover{
+  background: rgba(14, 24, 46, 0.68);
+  border-color: rgba(81,214,255,0.55);
+}
+
+:root[data-theme="space"] .btn-lightgrey,
+:root[data-theme="space"] .btn.pastel-grey{
+  background: rgba(9, 14, 30, 0.60);
+  border-color: rgba(120,180,255,0.20);
+  color: var(--space-text);
+}
+
+:root[data-theme="space"] .btn-desc{
+  color: var(--space-muted);
+}
+
+/* 파스텔 팔레트 버튼들을 "작전 색상"으로 재해석(어두운 배경 대비 보정) */
+:root[data-theme="space"] .btn.pastel-yellow{
+  background: rgba(255,183,3,0.16);
+  border-color: rgba(255,183,3,0.50);
+}
+:root[data-theme="space"] .btn.pastel-yellow:hover{ background: rgba(255,183,3,0.22); }
+
+:root[data-theme="space"] .btn.pastel-blue{
+  background: rgba(81,214,255,0.14);
+  border-color: rgba(81,214,255,0.55);
+}
+:root[data-theme="space"] .btn.pastel-blue:hover{ background: rgba(81,214,255,0.20); }
+
+:root[data-theme="space"] .btn.paste-pink{
+  background: rgba(255,79,216,0.14);
+  border-color: rgba(255,79,216,0.55);
+  color: var(--space-text-strong);
+}
+:root[data-theme="space"] .btn.paste-pink:hover{ background: rgba(255,79,216,0.20); }
+
+:root[data-theme="space"] .btn.pastel-mint{
+  background: rgba(92,255,170,0.12);
+  border-color: rgba(92,255,170,0.45);
+}
+:root[data-theme="space"] .btn.pastel-mint:hover{ background: rgba(92,255,170,0.18); }
+
+:root[data-theme="space"] .btn.pastel-red{
+  background: rgba(255,59,92,0.12);
+  border-color: rgba(255,59,92,0.48);
+}
+:root[data-theme="space"] .btn.pastel-red:hover{ background: rgba(255,59,92,0.18); }
+
+/* 입력 UI */
+:root[data-theme="space"] input[type="text"],
+:root[data-theme="space"] input[type="number"],
+:root[data-theme="space"] input[type="time"],
+:root[data-theme="space"] input[type="date"],
+:root[data-theme="space"] select,
+:root[data-theme="space"] textarea{
+  background: rgba(7, 12, 26, 0.70);
+  border-color: rgba(120,180,255,0.22);
+  color: var(--space-text);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.10), 0 0 0 1px rgba(81,214,255,0.06) inset;
+}
+
+:root[data-theme="space"] input:focus,
+:root[data-theme="space"] select:focus,
+:root[data-theme="space"] textarea:focus{
+  border-color: rgba(81,214,255,0.60);
+  box-shadow: 0 0 0 2px rgba(81,214,255,0.22), 0 0 0 1px rgba(81,214,255,0.12) inset;
+  background: rgba(8, 14, 30, 0.76);
+}
+
+:root[data-theme="space"] input:disabled,
+:root[data-theme="space"] select:disabled,
+:root[data-theme="space"] textarea:disabled{
+  background: rgba(8, 12, 26, 0.45);
+  color: rgba(208, 219, 255, 0.45);
+}
+
+/* 테이블 */
+:root[data-theme="space"] .sheetlike{
+  background: rgba(10, 14, 30, 0.55);
+}
+
+:root[data-theme="space"] .sheetlike th{
+  background: rgba(12, 18, 38, 0.86);
+  color: var(--space-text-strong);
+}
+
+:root[data-theme="space"] .sheetlike th,
+:root[data-theme="space"] .sheetlike td{
+  border-color: rgba(120,180,255,0.18);
+}
+
+/* 로컬 강조 색상 재정의 */
+:root[data-theme="space"] .local-accent{
+  color: var(--space-accent) !important;
+}
+
+/* 푸터 */
+:root[data-theme="space"] .site-footer{
+  background: rgba(8, 12, 26, 0.60);
+  border-top: 1px solid rgba(120,180,255,0.18);
+  color: var(--space-muted);
+}
+
+:root[data-theme="space"] .site-footer .shell{
+  color: var(--space-muted);
+}
+
+/* 스크롤바(지원 브라우저 한정) */
+:root[data-theme="space"]{
+  scrollbar-color: rgba(81,214,255,0.55) rgba(9, 14, 30, 0.80);
+}
+:root[data-theme="space"] ::-webkit-scrollbar{ width: 10px; height: 10px; }
+:root[data-theme="space"] ::-webkit-scrollbar-track{ background: rgba(9, 14, 30, 0.80); }
+:root[data-theme="space"] ::-webkit-scrollbar-thumb{
+  background: rgba(81,214,255,0.40);
+  border-radius: 999px;
+  border: 2px solid rgba(9, 14, 30, 0.80);
+}
+:root[data-theme="space"] ::-webkit-scrollbar-thumb:hover{ background: rgba(81,214,255,0.60); }
+
+/* 인쇄 시: 배경/오버레이를 제거하고 기존 문서처럼 또렷하게 */
+@media print{
+  :root[data-theme="space"]{
+    color-scheme: light;
+  }
+
+  :root[data-theme="space"] body{
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  :root[data-theme="space"] body::before,
+  :root[data-theme="space"] body::after{
+    display: none !important;
+  }
+
+  :root[data-theme="space"] .section,
+  :root[data-theme="space"] .card,
+  :root[data-theme="space"] .tool-card,
+  :root[data-theme="space"] .callout,
+  :root[data-theme="space"] .shot-details{
+    background: #fff !important;
+    color: #111 !important;
+    border-color: #e5e5e5 !important;
+    box-shadow: none !important;
+  }
+
+  :root[data-theme="space"] .btn{
+    background: #fff !important;
+    color: #111 !important;
+    border-color: #111 !important;
+    box-shadow: none !important;
+  }
+}
