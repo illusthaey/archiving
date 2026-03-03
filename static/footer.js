@@ -84,10 +84,7 @@
   <div class="shell">
     <div class="footer-main">
       © <span id="footer-year"></span>.
-      업무천재 고주무관. All rights reserved. · Contact: edusproutcomics@naver.com · 개인 제작·운영 페이지.<br/>
-      <br/>
-      ※본 사이트는 현장 업무 편의를 위해 개인적으로 제작한 참고용 도구이며, 공식 업무 지침이나 법적 해석을 대체하지 않습니다.
-      또한 서버와 데이터베이스 없이 운영하기 때문에 업로드한 파일 내용이 저장되지 않습니다. (기술적으로 저장이 불가능) <br/>
+      해석하는 원숭이. All rights reserved. · Contact: edusproutcomics@naver.com · 개인 제작·운영 웹페이지 (아카이빙용)<br/>
     </div>
 
     <div class="footer-tools" aria-label="화면 설정">
@@ -95,7 +92,6 @@
         <button type="button" class="btn btn-theme" data-theme="retro" aria-pressed="false">레트로</button>
         <button type="button" class="btn btn-theme" data-theme="classic" aria-pressed="false">깔끔</button>
       </div>
-      <div class="muted footer-hint">·테마 설정은 이 브라우저(로컬)에 저장됩니다.</div>
     </div>
   </div>
 </footer>
