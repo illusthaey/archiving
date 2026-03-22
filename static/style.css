@@ -210,6 +210,10 @@ main {
 .btn.primary { background: #111; color: #fff; }
 .btn.primary:hover { background: #000; }
 
+
+.btn.black { background: #111; color: #fff; }
+.btn.black:hover { background: #000; }
+
 .btn.ghost { background: #f9fafb; border-color: #d4d4d8; }
 .btn.ghost:hover { background: #eef2ff; }
 
@@ -719,119 +723,6 @@ body h2 + hr {
   padding: 10px 12px;
 }
 
-/* =========================================================
-   버튼 색상 팔레트 (2026.2.25)
-   ========================================================= */
-
-.btn[class*="pastel-"],
-.btn.paste-pink {
-  border-color: #222;
-  color: #111;
-  transition: background-color 0.15s ease, transform 0.05s ease;
-}
-
-.btn[class*="pastel-"]:hover,
-.btn.paste-pink:hover {
-  transform: translateY(-1px);
-}
-
-.btn[class*="pastel-"]:focus-visible,
-.btn.paste-pink:focus-visible {
-  outline: 2px solid rgba(17, 17, 17, 0.35);
-  outline-offset: 2px;
-}
-
-.btn.pastel-yellow { background: #FFF4B8; }
-.btn.pastel-yellow:hover { background: #FFEFA0; }
-
-.btn.pastel-blue { background: #E6F0FF; }
-.btn.pastel-blue:hover { background: #D7E8FF; }
-
-.btn.paste-pink { background: #FFE4EF; border-color: #222; color: #111; }
-.btn.paste-pink:hover { background: #FFD4E4; }
-.btn.paste-pink:focus-visible{
-  outline: 2px solid rgba(255, 123, 176, 0.55);
-  outline-offset: 2px;
-}
-
-.btn.pastel-mint { background: #DFF7EA; }
-.btn.pastel-mint:hover { background: #CFF2E1; }
-
-.btn.pastel-green { background: #E3F6C9; }
-.btn.pastel-green:hover { background: #D4F0B4; }
-
-.btn.pastel-orange { background: #FFE8D1; }
-.btn.pastel-orange:hover { background: #FFDDBE; }
-
-.btn.pastel-red { background: #FFD7D7; }
-.btn.pastel-red:hover { background: #FFC4C4; }
-
-.btn.pastel-purple { background: #EFE2FF; }
-.btn.pastel-purple:hover { background: #E3D1FF; }
-
-.btn.pastel-grey { background: #F3F4F6; border-color: #D4D4D8; }
-.btn.pastel-grey:hover { background: #E9EAEE; }
-
-.btn.pastel-teal { background: #D9F5F3; }
-.btn.pastel-teal:hover { background: #C7F0ED; }
-
-:root{
-  /* 원본(진한 파스텔) */
-  --rose-500: #FF5D8F;
-  --coral-500:#FF6B6B;
-  --peach-500:#FF9F68;
-  --apricot-500:#FFB86B;
-  --butter-500:#FFE08A;
-  --amber-500:#FBBF24;
-  --mint-500:#2DD4BF;
-  --seafoam-500:#34D399;
-  --pistachio-500:#A7F3A0;
-  --sky-500:#38BDF8;
-  --ice-500:#60A5FA;
-  --periwinkle-500:#7C83FF;
-  --lavender-500:#A78BFA;
-  --grape-500:#C084FC;
-  --lilac-500:#E879F9;
-
-  /* 어두운 버전(텍스트용) */
-  --rose-700: #C74970;
-  --coral-700:#C25151;
-  --peach-700:#A66744;
-  --apricot-700:#996E40;
-  --butter-700:#857448;
-  --amber-700:#947115;
-  --mint-700:#1C8376;
-  --seafoam-700:#218560;
-  --pistachio-700:#577E53;
-  --sky-700:#257DA4;
-  --ice-700:#4678B6;
-  --periwinkle-700:#666BD1;
-  --lavender-700:#7D68BC;
-  --grape-700:#8E62BA;
-  --lilac-700:#A757B3;
-}
-
-/* 유틸리티 클래스(텍스트 색) */
-.text-rose { color: var(--rose-700); }
-.text-sky  { color: var(--sky-700); }
-.text-mint { color: var(--mint-700); }
-.text-grape{ color: var(--grape-700); }
-
-/* 강조는 별도로 */
-.accent { font-weight: 700; }
-
-.badge-rose{
-  background: var(--rose-500);
-  color: var(--rose-700);
-  padding: .2em .6em;
-  border-radius: 999px;
-  font-weight: 700;
-}
-
-.table-wrap .simple-table th,
-.table-wrap .simple-table td {
-  text-align: center;
-}
 
 /* ===============================
    이미지 클릭 확대/축소 (CSS-only)
@@ -1313,536 +1204,531 @@ html[data-theme="retro"] .section{
 
 
 /* =========================================================
-   아카이빙 사이트 스킨 보강 (2026.3.17)
-   - 기존 style.css를 유지한 채, 아카이빙 전용 클래스 보강
-   - retro 테마를 '포켓몬스터 골드풍의 차분한 휴대용 게임 UI' 방향으로 재정의
-   - footer.js의 html[data-theme="retro"] 토글과 바로 호환
+   ✅ retro 모드에서도 버튼 고유 색 유지 (2026.3.20)
+   - style.css 맨 아래에 추가
+   - 기존 버튼 모양(레트로 입체감)은 유지
+   - 버튼별 원래 배경색만 다시 살아나게 함
    ========================================================= */
 
-/* -------------------------------
-   1) 아카이빙 사이트가 실제로 쓰는 공통 클래스
-   ------------------------------- */
-
-.hidden {
-  display: none !important;
+/* 1) 버튼 색 정보를 변수로 통일 */
+.btn{
+  --btn-bg: #fff;
+  --btn-bg-hover: #f3f4f6;
+  --btn-text: #111;
+  --btn-border: #222;
 }
 
-.site-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 800;
-  font-size: 1.05rem;
-  line-height: 1;
+.btn.primary{
+  --btn-bg: #111;
+  --btn-bg-hover: #000;
+  --btn-text: #fff;
+  --btn-border: #111;
+}
+
+.btn.ghost{
+  --btn-bg: #f9fafb;
+  --btn-bg-hover: #eef2ff;
+  --btn-text: #111;
+  --btn-border: #d4d4d8;
+}
+
+.btn.btn-lightgrey{
+  --btn-bg: #f3f4f6;
+  --btn-bg-hover: #e9eaee;
+  --btn-text: #111;
+  --btn-border: #d4d4d8;
+}
+
+.btn[class*="pastel-"],
+.btn.paste-pink{
+  --btn-text: #111;
+  --btn-border: #222;
+}
+
+.btn.pastel-yellow{
+  --btn-bg: #FFF4B8;
+  --btn-bg-hover: #FFEFA0;
+}
+
+.btn.pastel-blue{
+  --btn-bg: #E6F0FF;
+  --btn-bg-hover: #D7E8FF;
+}
+
+.btn.paste-pink{
+  --btn-bg: #FFE4EF;
+  --btn-bg-hover: #FFD4E4;
+}
+
+.btn.pastel-mint{
+  --btn-bg: #DFF7EA;
+  --btn-bg-hover: #CFF2E1;
+}
+
+.btn.pastel-green{
+  --btn-bg: #E3F6C9;
+  --btn-bg-hover: #D4F0B4;
+}
+
+.btn.pastel-orange{
+  --btn-bg: #FFE8D1;
+  --btn-bg-hover: #FFDDBE;
+}
+
+.btn.pastel-red{
+  --btn-bg: #FFD7D7;
+  --btn-bg-hover: #FFC4C4;
+}
+
+.btn.pastel-purple{
+  --btn-bg: #EFE2FF;
+  --btn-bg-hover: #E3D1FF;
+}
+
+.btn.pastel-grey{
+  --btn-bg: #F3F4F6;
+  --btn-bg-hover: #E9EAEE;
+  --btn-text: #111;
+  --btn-border: #D4D4D8;
+}
+
+.btn.pastel-teal{
+  --btn-bg: #D9F5F3;
+  --btn-bg-hover: #C7F0ED;
+}
+
+/* 2) retro에서는 입체감만 적용하고, 색은 각 버튼의 원래 값 유지 */
+html[data-theme="retro"] .btn{
+  background: var(--btn-bg, var(--retro-surface-2));
+  color: var(--btn-text, #111);
+  border-color: var(--btn-border, var(--retro-border));
+}
+
+html[data-theme="retro"] .btn:hover{
+  background: var(--btn-bg-hover, var(--btn-bg, var(--retro-surface-2)));
+}
+
+/* 3) footer의 테마 버튼 active는 기존 포인트 컬러 유지 */
+html[data-theme="retro"] .site-footer .btn.btn-theme.is-active{
+  background: var(--retro-accent);
   color: #111;
+  border-color: var(--retro-border);
 }
 
-.card-link {
-  display: block;
-  transition:
-    transform 0.14s ease,
-    background-color 0.14s ease,
-    border-color 0.14s ease,
-    box-shadow 0.14s ease;
+
+/* =========================================================
+   페이지 메인 래퍼 표준화 (레이아웃 전용)
+   ========================================================= */
+
+:root{
+  --page-main-pad-x: 16px;
+  --page-main-pad-top: 24px;
+  --page-main-pad-bottom: 56px;
 }
 
-.card-link:hover {
-  background: #f3f4f6;
+.page-main{
+  width: 100%;
+  max-width: var(--page-main-max, 880px);
+  margin: 0 auto;
+  padding: var(--page-main-pad-top) var(--page-main-pad-x) var(--page-main-pad-bottom);
 }
 
-.tags {
-  margin: 10px 0 0;
-  padding: 0;
-  list-style: none;
+.page-main--compact{ --page-main-max: 720px; }
+.page-main--slim{ --page-main-max: 860px; }
+.page-main--narrow{ --page-main-max: 880px; }
+.page-main--medium{ --page-main-max: 960px; }
+.page-main--wide{ --page-main-max: 1120px; }
+.page-main--xwide{ --page-main-max: 1280px; }
+.page-main--xxwide{ --page-main-max: 1360px; }
+.page-main--full{ --page-main-max: 1800px; }
+
+.page-toolbar,
+.action-row,
+.btnrow{
   display: flex;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 6px;
 }
 
-.tag {
-  font-size: 0.9rem;
-  line-height: 1.2;
-  color: #555;
-  padding: 5px 10px;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
+.page-toolbar.end,
+.action-row.end,
+.btnrow.end{
+  justify-content: flex-end;
 }
 
-.meta-line {
-  margin: 8px 0 0;
-  font-size: 0.95rem;
-  color: #666;
-}
-
-.prose {
-  margin-top: 10px;
-}
-
-.prose > :first-child {
-  margin-top: 0;
-}
-
-.prose > :last-child {
-  margin-bottom: 0;
-}
-
-.prose a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.prose code,
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: 0.94rem;
-}
-
-.prose :not(pre) > code,
-code:not(pre code) {
-  padding: 0.14em 0.42em;
-  border-radius: 6px;
-  background: rgba(17, 24, 39, 0.06);
-}
-
-pre {
-  margin: 12px 0;
-  padding: 14px 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fff;
+.tablewrap{
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  padding-bottom: 6px;
 }
 
-pre code {
-  display: block;
-  background: transparent;
+@media (max-width: 640px){
+  .page-main{
+    padding: 20px 14px 48px;
+  }
+
+  .section{
+    padding: 16px;
+  }
+
+  .card{
+    padding: 12px 14px;
+  }
+}
+
+/* =========================================================
+   Alien side background layout (2026.3.21 fast-light)
+   - /static/alien.jpg 한 장만 cover + no-repeat
+   - 배경 노출을 더 늘리고, 스크롤 지연을 줄이도록 효과를 가볍게 정리
+   - 공통 트리거: body.alien-side-bg
+   - 공통 래퍼: .alien-page-frame
+   - 래퍼가 없는 페이지는 direct header/main/footer를 fallback 패널로 처리
+   ========================================================= */
+
+body.alien-side-bg{
+  --alien-frame-gutter: clamp(72px, 16vw, 320px);
+  --alien-frame-max: 1500px;
+  --alien-panel-bg: rgba(255, 252, 248, 0.82);
+  --alien-panel-bg-solid: rgba(255, 252, 248, 0.88);
+  --alien-line: rgba(64, 48, 35, 0.12);
+  --alien-shadow-1: rgba(43, 30, 18, 0.11);
+  --alien-shadow-2: rgba(43, 30, 18, 0.05);
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  margin: 0;
   padding: 0;
+  background: #eae3db;
 }
 
-/* 목록/상세 페이지에서 제목 바로 아래 여백을 조금 더 단정하게 */
-.section > h1:first-child,
-.section > h2:first-child,
-.section > h3:first-child,
-.card > h2:first-child,
-.card > h3:first-child {
-  margin-top: 0;
+body.alien-side-bg::before,
+body.alien-side-bg::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* -------------------------------
-   2) Retro Gold Theme
-   - 복붙한 포켓몬 UI 재현이 아니라,
-     '금빛 카트리지 + 휴대용 게임 메뉴창' 분위기의 해석 버전
-   ------------------------------- */
-
-html[data-theme="retro"] {
-  color-scheme: light;
+body.alien-side-bg::before{
+  z-index: -2;
+  background: url("/static/alien.jpg") center center / cover no-repeat;
+  background-attachment: scroll;
+  filter: none;
 }
 
-html[data-theme="retro"] body,
-body.theme-retro {
-  --gold-bg-top: #d7cd9e;
-  --gold-bg-bottom: #c9bc82;
-  --gold-panel: #f6efd0;
-  --gold-panel-2: #ebe0b4;
-  --gold-panel-3: #e0d29b;
-  --gold-ink: #2f2918;
-  --gold-ink-soft: #5f5739;
-  --gold-line: #625733;
-  --gold-line-soft: #8b7d4d;
-  --gold-shadow: rgba(78, 68, 38, 0.26);
-  --gold-shadow-strong: rgba(78, 68, 38, 0.42);
-  --gold-glow: rgba(255, 250, 224, 0.72);
-  --gold-focus: rgba(118, 125, 82, 0.45);
-  --gold-accent: #8b7440;
-  --gold-accent-2: #707750;
-  --gold-accent-soft: rgba(139, 116, 64, 0.12);
-
+body.alien-side-bg::after{
+  z-index: -1;
   background:
-    radial-gradient(circle at 50% -10%, rgba(255, 252, 234, 0.52), transparent 32%),
-    radial-gradient(circle at 0% 20%, rgba(255, 245, 201, 0.22), transparent 34%),
-    radial-gradient(circle at 100% 0%, rgba(120, 124, 81, 0.10), transparent 36%),
-    repeating-linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05) 0 2px,
-      rgba(74, 65, 38, 0.02) 2px 4px
-    ),
-    linear-gradient(180deg, var(--gold-bg-top) 0%, var(--gold-bg-bottom) 100%);
-  color: var(--gold-ink);
-  background-attachment: fixed;
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0%,
+      rgba(255,255,255,0.00) 16%,
+      rgba(247,243,238,0.06) 34%,
+      rgba(247,243,238,0.14) 50%,
+      rgba(247,243,238,0.06) 66%,
+      rgba(255,255,255,0.00) 84%,
+      rgba(255,255,255,0.02) 100%
+    );
 }
 
-html[data-theme="retro"] body,
-html[data-theme="retro"] body p,
-html[data-theme="retro"] body li,
-html[data-theme="retro"] body div,
-html[data-theme="retro"] body span,
-body.theme-retro,
-body.theme-retro p,
-body.theme-retro li,
-body.theme-retro div,
-body.theme-retro span {
-  color: var(--gold-ink);
+body.alien-side-bg > .alien-page-frame,
+body.alien-side-bg > header.site-header,
+body.alien-side-bg > main,
+body.alien-side-bg > .home-link-wrap,
+body.alien-side-bg > footer.site-footer,
+body.alien-side-bg > .simple-footer{
+  width: calc(100% - var(--alien-frame-gutter));
+  max-width: var(--alien-frame-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-html[data-theme="retro"] body .muted,
-html[data-theme="retro"] body .sub,
-html[data-theme="retro"] body .subtitle,
-html[data-theme="retro"] body .meta-line,
-html[data-theme="retro"] body .note,
-body.theme-retro .muted,
-body.theme-retro .sub,
-body.theme-retro .subtitle,
-body.theme-retro .meta-line,
-body.theme-retro .note {
-  color: var(--gold-ink-soft);
+body.alien-side-bg > .alien-page-frame{
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(10px, 1.4vw, 18px);
+  padding: clamp(14px, 1.6vw, 22px);
 }
 
-html[data-theme="retro"] body h1,
-html[data-theme="retro"] body h2,
-html[data-theme="retro"] body h3,
-html[data-theme="retro"] body h4,
-html[data-theme="retro"] body .btn,
-html[data-theme="retro"] body .chip,
-html[data-theme="retro"] body .tag,
-html[data-theme="retro"] body summary,
-html[data-theme="retro"] body th,
-body.theme-retro h1,
-body.theme-retro h2,
-body.theme-retro h3,
-body.theme-retro h4,
-body.theme-retro .btn,
-body.theme-retro .chip,
-body.theme-retro .tag,
-body.theme-retro summary,
-body.theme-retro th {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", "Apple SD Gothic Neo", "Noto Sans KR",
-    "맑은 고딕", monospace;
-  letter-spacing: -0.02em;
-}
-
-html[data-theme="retro"] body h1,
-html[data-theme="retro"] body h2,
-body.theme-retro h1,
-body.theme-retro h2 {
-  color: var(--gold-ink);
-  text-shadow: 1px 1px 0 rgba(255, 249, 223, 0.65);
-}
-
-html[data-theme="retro"] .site-header,
-body.theme-retro .site-header {
-  background:
-    linear-gradient(180deg, rgba(255, 252, 237, 0.92), rgba(228, 216, 164, 0.96));
-  border-bottom: 2px solid var(--gold-line);
-  box-shadow: 0 3px 0 rgba(98, 87, 51, 0.24);
-}
-
-html[data-theme="retro"] .site-footer,
-body.theme-retro .site-footer {
-  background:
-    linear-gradient(180deg, rgba(246, 239, 208, 0.96), rgba(231, 221, 177, 0.96));
-  border-top: 2px solid var(--gold-line);
-  color: var(--gold-ink-soft);
-}
-
-html[data-theme="retro"] .site-title,
-body.theme-retro .site-title {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 2px solid var(--gold-line);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 231, 0.98), rgba(235, 224, 180, 0.98));
-  color: var(--gold-ink);
+body.alien-side-bg > .alien-page-frame,
+body.alien-side-bg > header.site-header,
+body.alien-side-bg > main,
+body.alien-side-bg > footer.site-footer,
+body.alien-side-bg > .simple-footer{
+  border: 1px solid var(--alien-line);
+  border-radius: clamp(20px, 2.2vw, 30px);
+  background: var(--alien-panel-bg);
   box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.12),
-    3px 3px 0 var(--gold-shadow);
+    0 14px 34px var(--alien-shadow-1),
+    0 3px 10px var(--alien-shadow-2);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-html[data-theme="retro"] .section,
-html[data-theme="retro"] .card,
-html[data-theme="retro"] .tool-card,
-html[data-theme="retro"] .callout,
-html[data-theme="retro"] .shot-details,
-html[data-theme="retro"] .dl-shot,
-body.theme-retro .section,
-body.theme-retro .card,
-body.theme-retro .tool-card,
-body.theme-retro .callout,
-body.theme-retro .shot-details,
-body.theme-retro .dl-shot {
-  background:
-    linear-gradient(180deg, rgba(255, 253, 240, 0.96), rgba(240, 231, 193, 0.96));
-  border: 2px solid var(--gold-line);
-  border-radius: 10px;
-  box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.10),
-    4px 4px 0 var(--gold-shadow);
+body.alien-side-bg > header.site-header,
+body.alien-side-bg > main,
+body.alien-side-bg > footer.site-footer,
+body.alien-side-bg > .simple-footer{
+  margin-top: clamp(10px, 1.4vw, 18px);
 }
 
-html[data-theme="retro"] .card-link:hover,
-body.theme-retro .card-link:hover {
-  background:
-    linear-gradient(180deg, rgba(255, 250, 231, 0.98), rgba(233, 223, 176, 0.98));
-  border-color: var(--gold-line);
-  transform: translate(-1px, -1px);
-  box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.12),
-    5px 5px 0 var(--gold-shadow-strong);
+body.alien-side-bg > .alien-page-frame .site-header,
+body.alien-side-bg > .alien-page-frame .topnav,
+body.alien-side-bg > .alien-page-frame .site-footer,
+body.alien-side-bg > .alien-page-frame .simple-footer{
+  background: transparent;
 }
 
-html[data-theme="retro"] .btn,
-body.theme-retro .btn {
-  border: 2px solid var(--gold-line);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 251, 235, 0.98), rgba(233, 223, 178, 0.98));
-  color: var(--gold-ink);
-  box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.10),
-    3px 3px 0 var(--gold-shadow);
-  transition:
-    transform 0.08s ease,
-    box-shadow 0.08s ease,
-    background-color 0.16s ease,
-    filter 0.16s ease;
+body.alien-side-bg > .alien-page-frame .site-header,
+body.alien-side-bg > header.site-header{
+  border-bottom-color: rgba(64, 48, 35, 0.08);
 }
 
-html[data-theme="retro"] .btn:hover,
-body.theme-retro .btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.10),
-    4px 4px 0 var(--gold-shadow-strong);
-  background:
-    linear-gradient(180deg, rgba(255, 252, 237, 1), rgba(238, 229, 188, 1));
+body.alien-side-bg > .alien-page-frame .site-footer,
+body.alien-side-bg > footer.site-footer{
+  border-top-color: rgba(64, 48, 35, 0.08);
 }
 
-html[data-theme="retro"] .btn:active,
-body.theme-retro .btn:active {
-  transform: translate(1px, 1px);
-  box-shadow:
-    inset 1px 1px 0 rgba(255, 248, 219, 0.72),
-    inset -1px -1px 0 rgba(98, 87, 51, 0.14),
-    1px 1px 0 var(--gold-shadow);
+body.alien-side-bg > .alien-page-frame .site-header .shell,
+body.alien-side-bg > .alien-page-frame .topnav .shell,
+body.alien-side-bg > .alien-page-frame header .wrap,
+body.alien-side-bg > .alien-page-frame main .wrap,
+body.alien-side-bg > .alien-page-frame > .shell{
+  max-width: 100%;
 }
 
-html[data-theme="retro"] .btn.primary,
-body.theme-retro .btn.primary,
-html[data-theme="retro"] .site-footer .btn.btn-theme.is-active,
-body.theme-retro .site-footer .btn.btn-theme.is-active {
-  background:
-    linear-gradient(180deg, #7b734f, #645c3a);
-  color: #f8f1d1;
-  border-color: #4d4528;
+body.alien-side-bg .section,
+body.alien-side-bg .card,
+body.alien-side-bg .tool-card,
+body.alien-side-bg .callout,
+body.alien-side-bg .shot-details,
+body.alien-side-bg .dl-shot,
+body.alien-side-bg .dropzone,
+body.alien-side-bg .result,
+body.alien-side-bg .table-scroll,
+body.alien-side-bg .file-list-wrap{
+  box-shadow: 0 6px 16px rgba(43, 30, 18, 0.05);
 }
 
-html[data-theme="retro"] .btn.ghost,
-body.theme-retro .btn.ghost {
-  background:
-    linear-gradient(180deg, rgba(247, 241, 213, 0.96), rgba(229, 219, 173, 0.96));
-  border-color: var(--gold-line-soft);
+body.alien-side-bg > .home-link-wrap{
+  margin-top: 16px;
 }
 
-html[data-theme="retro"] .chip,
-body.theme-retro .chip,
-html[data-theme="retro"] .tag,
-body.theme-retro .tag {
-  border: 2px solid var(--gold-line);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 233, 0.96), rgba(233, 223, 178, 0.96));
-  color: var(--gold-ink);
-  box-shadow:
-    inset 1px 1px 0 var(--gold-glow),
-    2px 2px 0 rgba(78, 68, 38, 0.18);
+body.alien-side-bg > .home-link-wrap .btn,
+body.alien-side-bg > .home-link-wrap .btn-home{
+  background: rgba(255, 252, 248, 0.86);
+  border-color: rgba(64, 48, 35, 0.18);
+  box-shadow: 0 6px 16px rgba(43, 30, 18, 0.08);
 }
 
-html[data-theme="retro"] .chip:hover,
-body.theme-retro .chip:hover {
-  background:
-    linear-gradient(180deg, rgba(255, 252, 237, 1), rgba(238, 229, 188, 1));
+body.alien-side-bg > footer.site-footer,
+body.alien-side-bg > .simple-footer{
+  padding: clamp(14px, 1.8vw, 22px);
 }
 
-html[data-theme="retro"] .chip.is-active,
-html[data-theme="retro"] .chip[aria-current="location"],
-body.theme-retro .chip.is-active,
-body.theme-retro .chip[aria-current="location"] {
-  background:
-    linear-gradient(180deg, rgba(227, 229, 198, 0.98), rgba(201, 204, 160, 0.98));
-  border-color: var(--gold-line);
+body.alien-side-bg > footer.site-footer .shell,
+body.alien-side-bg > .simple-footer{
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
-html[data-theme="retro"] .chip.is-active::after,
-html[data-theme="retro"] .chip[aria-current="location"]::after,
-body.theme-retro .chip.is-active::after,
-body.theme-retro .chip[aria-current="location"]::after {
-  content: "◆";
-  font-size: 0.72em;
-  margin-left: 6px;
-  color: var(--gold-accent);
+body.alien-side-bg #btnToTop,
+body.alien-side-bg #back-to-top-fab .btn,
+body.alien-side-bg .to-top{
+  box-shadow: 0 8px 18px rgba(43, 30, 18, 0.10);
 }
 
-html[data-theme="retro"] input[type="text"],
-html[data-theme="retro"] input[type="number"],
-html[data-theme="retro"] input[type="time"],
-html[data-theme="retro"] input[type="date"],
-html[data-theme="retro"] select,
-html[data-theme="retro"] textarea,
-body.theme-retro input[type="text"],
-body.theme-retro input[type="number"],
-body.theme-retro input[type="time"],
-body.theme-retro input[type="date"],
-body.theme-retro select,
-body.theme-retro textarea {
-  border: 2px solid var(--gold-line);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(242, 245, 223, 0.96), rgba(225, 230, 198, 0.96));
-  color: #30331f;
-  box-shadow: inset 2px 2px 0 rgba(98, 87, 51, 0.08);
+@media (max-width: 1200px){
+  body.alien-side-bg{
+    --alien-frame-gutter: clamp(28px, 8vw, 120px);
+    --alien-panel-bg: rgba(255, 252, 248, 0.86);
+    --alien-panel-bg-solid: rgba(255, 252, 248, 0.90);
+  }
 }
 
-html[data-theme="retro"] input:focus,
-html[data-theme="retro"] select:focus,
-html[data-theme="retro"] textarea:focus,
-body.theme-retro input:focus,
-body.theme-retro select:focus,
-body.theme-retro textarea:focus {
-  outline: 3px solid var(--gold-focus);
+@media (max-width: 900px){
+  body.alien-side-bg{
+    --alien-frame-gutter: 14px;
+    --alien-panel-bg: rgba(255, 252, 248, 0.92);
+    --alien-panel-bg-solid: rgba(255, 252, 248, 0.95);
+  }
+
+  body.alien-side-bg::after{
+    background:
+      linear-gradient(180deg, rgba(248,244,239,0.08), rgba(238,232,224,0.20));
+  }
+
+  body.alien-side-bg > .alien-page-frame{
+    padding: 12px;
+  }
+
+  body.alien-side-bg > .alien-page-frame,
+  body.alien-side-bg > header.site-header,
+  body.alien-side-bg > main,
+  body.alien-side-bg > footer.site-footer,
+  body.alien-side-bg > .simple-footer{
+    border-radius: 18px;
+  }
+}
+
+@media print{
+  body.alien-side-bg::before,
+  body.alien-side-bg::after{
+    display: none !important;
+  }
+
+  body.alien-side-bg > .alien-page-frame,
+  body.alien-side-bg > header.site-header,
+  body.alien-side-bg > main,
+  body.alien-side-bg > footer.site-footer,
+  body.alien-side-bg > .simple-footer{
+    background: #fff !important;
+    box-shadow: none !important;
+    border-color: #ddd !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+
+/* =========================================================
+   제목/서브문구 정렬 공통 고정 (2026.3.22)
+   - h1은 항상 가운데 정렬
+   - <p class="sub">는 항상 왼쪽 정렬
+   - 상세 페이지 개별 inline CSS보다 우선하도록 specificity를 높임
+   ========================================================= */
+
+body h1,
+body .site-header h1,
+body .page-head h1,
+body main.overtime-app h1{
+  text-align: center !important;
+}
+
+body p.sub,
+body .site-header p.sub,
+body .page-head p.sub,
+body main.overtime-app p.sub{
+  text-align: left !important;
+}
+
+
+
+/* =========================================================
+   버튼 색상 팔레트 (2026.2.25)
+   ========================================================= */
+
+.btn[class*="pastel-"],
+.btn.pastel-pink {
+  border-color: #222;
+  color: #111;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn[class*="pastel-"]:hover,
+.btn.pastel-pink:hover {
+  transform: translateY(-1px);
+}
+
+.btn[class*="pastel-"]:focus-visible,
+.btn.pastel-pink:focus-visible {
+  outline: 2px solid rgba(17, 17, 17, 0.35);
   outline-offset: 2px;
-  border-color: var(--gold-line);
-  box-shadow:
-    inset 2px 2px 0 rgba(98, 87, 51, 0.08),
-    0 0 0 2px rgba(255, 251, 231, 0.42);
 }
 
-html[data-theme="retro"] hr,
-body.theme-retro hr {
-  border: 0;
-  border-top: 2px dashed rgba(98, 87, 51, 0.42);
-  opacity: 1;
+.btn.pastel-yellow { background: #FFF4B8; }
+.btn.pastel-yellow:hover { background: #FFEFA0; }
+
+.btn.pastel-blue { background: #E6F0FF; }
+.btn.pastel-blue:hover { background: #D7E8FF; }
+
+.btn.paste-pink { background: #FFE4EF; border-color: #222; color: #111; }
+.btn.paste-pink:hover { background: #FFD4E4; }
+.btn.paste-pink:focus-visible{
+  outline: 2px solid rgba(255, 123, 176, 0.55);
+  outline-offset: 2px;
 }
 
-html[data-theme="retro"] .sheetlike,
-body.theme-retro .sheetlike {
-  background: rgba(255, 250, 232, 0.88);
+.btn.pastel-mint { background: #DFF7EA; }
+.btn.pastel-mint:hover { background: #CFF2E1; }
+
+.btn.pastel-green { background: #E3F6C9; }
+.btn.pastel-green:hover { background: #D4F0B4; }
+
+.btn.pastel-orange { background: #FFE8D1; }
+.btn.pastel-orange:hover { background: #FFDDBE; }
+
+.btn.pastel-red { background: #FFD7D7; }
+.btn.pastel-red:hover { background: #FFC4C4; }
+
+.btn.pastel-purple { background: #EFE2FF; }
+.btn.pastel-purple:hover { background: #E3D1FF; }
+
+.btn.pastel-grey { background: #F3F4F6; border-color: #D4D4D8; }
+.btn.pastel-grey:hover { background: #E9EAEE; }
+
+.btn.pastel-teal { background: #D9F5F3; }
+.btn.pastel-teal:hover { background: #C7F0ED; }
+
+:root{
+  /* 원본(진한 파스텔) */
+  --rose-500: #FF5D8F;
+  --coral-500:#FF6B6B;
+  --peach-500:#FF9F68;
+  --apricot-500:#FFB86B;
+  --butter-500:#FFE08A;
+  --amber-500:#FBBF24;
+  --mint-500:#2DD4BF;
+  --seafoam-500:#34D399;
+  --pistachio-500:#A7F3A0;
+  --sky-500:#38BDF8;
+  --ice-500:#60A5FA;
+  --periwinkle-500:#7C83FF;
+  --lavender-500:#A78BFA;
+  --grape-500:#C084FC;
+  --lilac-500:#E879F9;
+
+  /* 어두운 버전(텍스트용) */
+  --rose-700: #C74970;
+  --coral-700:#C25151;
+  --peach-700:#A66744;
+  --apricot-700:#996E40;
+  --butter-700:#857448;
+  --amber-700:#947115;
+  --mint-700:#1C8376;
+  --seafoam-700:#218560;
+  --pistachio-700:#577E53;
+  --sky-700:#257DA4;
+  --ice-700:#4678B6;
+  --periwinkle-700:#666BD1;
+  --lavender-700:#7D68BC;
+  --grape-700:#8E62BA;
+  --lilac-700:#A757B3;
 }
 
-html[data-theme="retro"] .sheetlike th,
-html[data-theme="retro"] .sheetlike td,
-body.theme-retro .sheetlike th,
-body.theme-retro .sheetlike td {
-  border-color: rgba(98, 87, 51, 0.36);
-}
+/* 유틸리티 클래스(텍스트 색) */
+.text-rose { color: var(--rose-700); }
+.text-sky  { color: var(--sky-700); }
+.text-mint { color: var(--mint-700); }
+.text-grape{ color: var(--grape-700); }
 
-html[data-theme="retro"] .sheetlike th,
-body.theme-retro .sheetlike th {
-  background: rgba(216, 205, 158, 0.60);
-  color: var(--gold-ink);
-}
+/* 강조는 별도로 */
+.accent { font-weight: 700; }
 
-html[data-theme="retro"] pre,
-body.theme-retro pre {
-  border: 2px solid var(--gold-line);
-  border-radius: 10px;
-  background:
-    linear-gradient(180deg, rgba(58, 53, 33, 0.98), rgba(45, 41, 24, 0.98));
-  color: #f5edc8;
-  box-shadow:
-    inset 1px 1px 0 rgba(255, 248, 219, 0.06),
-    4px 4px 0 rgba(78, 68, 38, 0.24);
-}
-
-html[data-theme="retro"] .prose :not(pre) > code,
-html[data-theme="retro"] code:not(pre code),
-body.theme-retro .prose :not(pre) > code,
-body.theme-retro code:not(pre code) {
-  background: rgba(98, 87, 51, 0.12);
-  color: var(--gold-ink);
-}
-
-html[data-theme="retro"] .prose a,
-body.theme-retro .prose a,
-html[data-theme="retro"] .card a,
-body.theme-retro .card a {
-  color: #5b5d33;
-  text-decoration-color: rgba(91, 93, 51, 0.45);
-}
-
-html[data-theme="retro"] .prose a:hover,
-body.theme-retro .prose a:hover,
-html[data-theme="retro"] .card a:hover,
-body.theme-retro .card a:hover {
-  color: #413b20;
-  text-decoration-color: rgba(65, 59, 32, 0.72);
-}
-
-html[data-theme="retro"] .tool-thumb,
-html[data-theme="retro"] .dl-shot img,
-body.theme-retro .tool-thumb,
-body.theme-retro .dl-shot img {
-  border: 2px solid rgba(98, 87, 51, 0.30);
-  background: #fff8df;
-}
-
-html[data-theme="retro"] .img-modal-content,
-body.theme-retro .img-modal-content {
-  background: #fff7dc;
-  border: 2px solid var(--gold-line);
-}
-
-html[data-theme="retro"] .back-to-top-fab .btn,
-body.theme-retro .back-to-top-fab .btn {
+.badge-rose{
+  background: var(--rose-500);
+  color: var(--rose-700);
+  padding: .2em .6em;
   border-radius: 999px;
+  font-weight: 700;
 }
 
-html[data-theme="retro"] .local-accent,
-body.theme-retro .local-accent,
-html[data-theme="retro"] .accent,
-body.theme-retro .accent {
-  color: #5d6036 !important;
-}
-
-html[data-theme="retro"] .badge-rose,
-body.theme-retro .badge-rose {
-  background: rgba(139, 116, 64, 0.18);
-  color: #5f4d26;
-  border: 1px solid rgba(98, 87, 51, 0.22);
-}
-
-/* 스크롤바까지 너무 번쩍거리면 레트로가 아니라 놀이공원이라서 살짝만 */
-html[data-theme="retro"] * {
-  scrollbar-color: rgba(98, 87, 51, 0.56) rgba(255, 249, 226, 0.72);
-}
-
-/* 모바일에서는 fixed 배경이 버벅일 수 있어 스크롤로 조정 */
-@media (max-width: 640px) {
-  html[data-theme="retro"] body,
-  body.theme-retro {
-    background-attachment: scroll;
-  }
-
-  html[data-theme="retro"] .section,
-  html[data-theme="retro"] .card,
-  html[data-theme="retro"] .tool-card,
-  html[data-theme="retro"] .callout,
-  html[data-theme="retro"] .shot-details,
-  html[data-theme="retro"] .dl-shot,
-  body.theme-retro .section,
-  body.theme-retro .card,
-  body.theme-retro .tool-card,
-  body.theme-retro .callout,
-  body.theme-retro .shot-details,
-  body.theme-retro .dl-shot {
-    box-shadow:
-      inset 1px 1px 0 var(--gold-glow),
-      inset -1px -1px 0 rgba(98, 87, 51, 0.08),
-      3px 3px 0 var(--gold-shadow);
-  }
+.table-wrap .simple-table th,
+.table-wrap .simple-table td {
+  text-align: center;
 }
