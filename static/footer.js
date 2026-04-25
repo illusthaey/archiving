@@ -19,7 +19,7 @@
   // 0) 테마(레트로/깔끔) — 로컬 저장
   // -----------------------------
   const THEME_KEY = "edu_theme";
-  const DEFAULT_THEME = "classic"; // 기본값: 깔끔
+  const DEFAULT_THEME = "retro"; // 기본값: 레트로
 
   function normalizeTheme(t) {
     return t === "classic" || t === "retro" ? t : DEFAULT_THEME;
@@ -84,7 +84,7 @@
   <div class="shell">
     <div class="footer-main">
       © <span id="footer-year"></span>.
-      해석하는 원숭이. All rights reserved. · Contact: edusproutcomics@naver.com · 개인 제작·운영 페이지.<br/>
+      해석하는 원숭이. All rights reserved. · Contact: edusproutcomics@naver.com · 개인 제작·운영 웹페이지 (아카이빙용)<br/>
     </div>
 
     <div class="footer-tools" aria-label="화면 설정">
